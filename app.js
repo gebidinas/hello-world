@@ -4,6 +4,9 @@ var util = require('util');
 var events = require('events');
 var module1 = require('./module1');
 var module2 = require('./module2');
+var movies = require('./movies');
+var users = require('./users');
+var express = require('express');
 
 http.createServer(function (req, res) {
     console.log('requested url : ' + req.url);
@@ -26,6 +29,22 @@ http.createServer(function (req, res) {
         module2.myFunction();
         res.end();
     }
+    else if (req.url === '/movies') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        movies.listAllMovies();
+        res.end();   
+    }
+    else if (req.url === '/movies/genre') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        movies.listAllGenres();
+        res.end();
+    }
+    else if (req.url === '/users') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        users.listAllUsers();
+        res.end();
+    }
+    
     else {
         res.writeHead(404, { 'Content-Type': 'text.html' });
         fs.createReadStream('404.html').pipe(res);
@@ -92,3 +111,4 @@ readStream.on('end', function(chunk){
 })
 
 
+var app = express();

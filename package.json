@@ -1,0 +1,15 @@
+{
+  "name": "ged",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "-v"
+  },
+  "author": "",
+  "license": "ISC"
+}
